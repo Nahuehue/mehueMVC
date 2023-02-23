@@ -54,13 +54,13 @@ abstract class Repository{
 
     protected function find(){
         try {
-            if( get_class($query = $this->connect()) == "PDOException" ){
-                return $query;
+            if( get_class($db = $this->connect()) == "PDOException" ){
+                return $db;
             }
-            $query->prepare($this->command);
+            $query = $db->prepare($this->command);
             $query->execute($this->params);
 
-            $result = doLoad($query->fetch());
+            $result = $this->doLoad($query->fetch());
             
             return $result;
         } catch (PDOException $e) {
