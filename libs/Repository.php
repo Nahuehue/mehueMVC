@@ -30,24 +30,24 @@ abstract class Repository{
 
             return $pdo;
         }catch(PDOException $e){
-            return $e;
+            return "Connect error(".get_class($this)."): ". $e->getMessage();
         }
     }
 
     protected function findAll(){
         try{
-            if( get_class($query = $this->connect()) == "PDOException" ){
-                return $query;
+            if( get_class($db = $this->connect()) == "PDOException" ){
+                return $db;
             }
-            $query->prepare($this->command);
+
+            $query = $db->prepare($this->command);
             $query->execute($this->params);
 
             $array = $this->loadAll($query);
 
             return $array;
         }catch(PDOException $e){
-
-            return $e;
+            return "FindAll error(".get_class($this)."): ".$e->getMessage();
         }
 
     }
@@ -64,23 +64,23 @@ abstract class Repository{
             
             return $result;
         } catch (PDOException $e) {
-            return $e;
+            return "Find error(".get_class($this)."): ".$e->getMessage();
         }
     }
 
-    protected function excecuteNonQuery(){
+    protected function execNonQuery(){
         try{
 
-            if( get_class($query = $this->connect()) == "PDOException" ){
-                return $query;
+            if( get_class($db = $this->connect()) == "PDOException" ){
+                return $db;
             }
 
-            $query->prepare($this->command);
+            $query = $db->prepare($this->command);
             $query->execute($this->params);
             
             return true;
         }catch(PDOException $e){
-            return $e;
+            return "NonQuery error(".get_class($this)."): ".$e->getMessage();
         }
     }
 

@@ -7,14 +7,14 @@ class Usuario
 {
 	private $id;
 	private $nombre;
-	private $contraseña;
+	private $contrasenia;
 	private $perfil;
 
-	function __construct($id,$nombre,$contraseña,$perfil)
+	function __construct($id,$nombre,$contrasenia,$perfil)
 	{
 		$this->id = $id;
 		$this->nombre = $nombre;
-		$this->contraseña = $contraseña;
+		$this->contrasenia = $contrasenia;
 		$this->perfil = $perfil;
 	}
 
@@ -30,8 +30,8 @@ class Usuario
 		return $this->$nombre;
 	}
 
-	function getContraseña(){
-		return $this->$contraseña;
+	function getcontrasenia(){
+		return $this->$contrasenia;
 	}
 }
 
