@@ -37,14 +37,15 @@ class ArticuloRepository extends Repository
 			':id' => $articulo->getId(),
 			':contenido' => $articulo->getContenido(),
 			':public' => (int)$articulo->getEspublico(),
-			':fechacreacion' => $articulo->getFechacreacion(),
-			':fechaedicion' => $articulo->getFechaedicion(),
+			':fechacreacion' => $articulo->getFechacreacion()->format('Y-m-d H:i:s'),
+			':fechaedicion' => $articulo->getFechaedicion()->format('Y-m-d H:i:s'),
 			':tieneportada' => (int)$articulo->getTieneportada(),
 		);
 		$this->execNonQuery();
 	}
 	
 	function doLoad($array){
+		if($array == null) return null;
 		return new Articulo((int)$array["id"],(int)$array["usuarioid"],(string)$array["contenido"],(bool)$array["espublico"],new DateTime($array["fechacreacion"]),new DateTime($array["fechaedicion"]),(bool)$array["tieneportada"]);
 	}
 }

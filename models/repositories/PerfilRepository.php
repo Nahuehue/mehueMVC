@@ -15,6 +15,7 @@ class PerfilRepository extends Repository
 
 	
 	function doLoad($array){
+		if($array == null) return null;
 		$funcs = new FuncionRepository();
 		return new Perfil((int)$array["id"],$array["nombre"],$funcs->getAllByPerfil($array["id"]));
 		$funcs = null;

@@ -21,6 +21,7 @@ class FuncionRepository extends Repository
 
 	
 	function doLoad($array){
+		if($array == null) return null;
 		return new Funcion((int)$array["id"],$array["nombre"]);
 	}
 }

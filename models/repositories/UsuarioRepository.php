@@ -21,6 +21,7 @@ class UsuarioRepository extends Repository
 
 	
 	function doLoad($array){
+		if($array == null) return null;
 		$p = new PerfilRepository();
 		return new Usuario((int)$array["id"],$array["nombre"],$array["contrasenia"],$p->get($array["perfilid"]));
 	}
