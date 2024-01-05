@@ -10,6 +10,8 @@ class Usuario
 	private $contrasenia;
 	private $perfil;
 
+
+	//aca se esta armando un usuario con los datos pasados por parametros
 	function __construct($id,$nombre,$contrasenia,$perfil)
 	{
 		$this->id = $id;
@@ -17,22 +19,25 @@ class Usuario
 		$this->contrasenia = $contrasenia;
 		$this->perfil = $perfil;
 	}
-
+	
+//los getters para poder acceder a los datos sin violar el encapsulamiento
 	function getId(){
-		return $this->$id;
+		return $this->id;
 	}
 
 	function getPerfil(){
-		return $this->$perfil;
+		return $this->perfil;
 	}
 
 	function getNombre(){
-		return $this->$nombre;
+		return $this->nombre;
 	}
 
 	function getcontrasenia(){
-		return $this->$contrasenia;
+		return $this->contrasenia;
 	}
+
+
 }
 
  ?>

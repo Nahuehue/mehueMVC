@@ -2,18 +2,22 @@
 
 class Controller{
 
-    protected function render(){
-        if ( count ($args = func_get_args()) == 1 ) {
+    public $data = [];
+    protected function render($nombre = "index"){
+        // asi nunca mas
+       /* if ( count ($args = func_get_args()) == 1 ) {
             $nombre = $args[0];
-            $var = [];
-        }elseif (count($args) > 1) {
-            $nombre = $args[0];
-            $var = $args[1];
         }else{
             $nombre = "index";
-            $var = [];
-        }
-        include 'views/'. substr(get_class($this),0,-10) . "/" . $nombre . '.php';
+        }*/
+
+        //$nombre = count ($args = func_get_args()) == 1  ? $args[0] : "index";
+
+        //el substr substrae todo lo que esta entre indice 0 y el indice-10 del string (elimina el controller.php) De home o x 
+        //la variable viewfolder alnmacena el nombre de la carpeta del view 
+
+        $viewFolder = substr(get_class($this), 0, -10) //des pues de la coma " "
+        include 'views/'.$viewFolder. "/" . $nombre . '.php';
     }
 }
 

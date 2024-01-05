@@ -1,8 +1,11 @@
 <?php 
+//cada funcion es una pantalla 
 
 /**
  * Funcion
  */
+
+ //a que hace referencia a la funcion???
 class Funcion
 {
 	
