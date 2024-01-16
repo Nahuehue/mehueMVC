@@ -18,7 +18,7 @@ include "views/header.php";
  ?>
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="<?php echo URL_BASE . "Articulo/" . $articulo->getId(); ?>">
+                        <a href="<?php echo URL_BASE . "?url=Articulo/" . $articulo->getId(); ?>">
                             <h2 class="post-title"><?php echo $articulo->getTitulo(); ?></h2>
                             <h3 class="post-subtitle"><?php echo $articulo->getSubtitulo(); ?></h3>
                         </a>

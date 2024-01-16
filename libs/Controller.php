@@ -16,7 +16,8 @@ class Controller{
         //el substr substrae todo lo que esta entre indice 0 y el indice-10 del string (elimina el controller.php) De home o x 
         //la variable viewfolder alnmacena el nombre de la carpeta del view 
 
-        $viewFolder = substr(get_class($this), 0, -10) //des pues de la coma " "
+        $viewFolder = substr(get_class($this), 0, -10); //des pues de la coma " "(obtienen nombre de lka clase ArticuloController contact etc)
+      //  print("nombre: $nombre folder:$viewFolder");
         include 'views/'.$viewFolder. "/" . $nombre . '.php';
     }
 }

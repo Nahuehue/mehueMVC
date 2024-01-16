@@ -9,10 +9,13 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?php echo URL_BASE; ?>">Home</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?php echo URL_BASE; ?>?url=Article/new">Nuevo Articulo</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?php echo URL_BASE; ?>?url=Article/New">Nuevo Articulo</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?php echo URL_BASE; ?>?url=Contact">Contacto</a></li>
                         
                     </ul>
                 </div>
             </div>
         </nav>
+
+       
+        

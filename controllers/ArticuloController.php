@@ -20,7 +20,7 @@ class ArticuloController extends Controller
 
        
     
-        
+        //render renderiza osea da la view
 		$this->render("index");
         //levanta el index por default 
 	}

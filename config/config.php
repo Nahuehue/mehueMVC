@@ -5,7 +5,7 @@
 
 //la url base es como siempre imnicia la url http://localhost/ ... 
 //luego cuando se llame desde otras partes esto se completara 
-define('URL_BASE', 'http://localhost/');
+define('URL_BASE', 'http://localhost');
 
 //configuracion base de datos
 define('HOST', 'localhost');   //Host = a la ip donde esta todo alojadoen este caso localhost

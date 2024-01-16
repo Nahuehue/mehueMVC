@@ -9,6 +9,7 @@ abstract class Repository{
         //Conexión con la base de datos
         
         //MeloAsk llamandolo de esta forma hacemos un llamado a config no?
+        
         $this->host     = constant('HOST');     
         $this->db       = constant('DB');
         $this->user     = constant('USER');

@@ -52,7 +52,7 @@ class App
 		}else{
             //esto esta redireccionando la url que esta despues del location.
             //ToDo profundizar en header
-			header("Location: ".constant("URL_BASE")."url=error/404");
+			header("Location: ".constant("URL_BASE")."?url=error/404");
 		}
 
 	}
