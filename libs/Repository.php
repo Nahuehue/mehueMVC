@@ -4,6 +4,11 @@ abstract class Repository{
 
     protected $command;
     protected $params;
+    private $host;
+    private $db;
+    private $user;
+    private $password;
+    private $charset;
 
     function __construct(){
         //Conexión con la base de datos
@@ -20,7 +25,6 @@ abstract class Repository{
 
     //Este metodo como dice  su nombre es el encargado de conectarse a la base de datos.
     private function connect(){
-        try{
          //PDO clase de php nativa
          //PDO PHP Data Objects
          //PDO se encarga de mantener la conexion con la base de datos
@@ -35,18 +39,12 @@ abstract class Repository{
                     PDO::ATTR_EMULATE_PREPARES   => false 
                 ]//ademas tmbn esta manejando errores y el errmode_exception dice que el pdo va a lanzar excepciones
             );
-
-        }catch(PDOException $e){
-            return $e;
-        }//esto retorna la excepcion capturada de tipo PDO (segun entiendo el $e va a guardar cualquier exception)
     }
 
     //funcion para buscartodos
     protected function findAll(){
-        try{
             $db = $this->connect();                     //conexion a la base de datos (en $db se guarda el objeto PDO que es el encargado de la conexion)
-            if( get_class($db) == "PDOException" )      //se fija que $db se una excepcion si lo es devuelve la excepcion 
-                return $db;                             //(calculo que para manejarla de otra parte del codigo)
+                                                       //(calculo que para manejarla de otra parte del codigo)
                 
 
             $query = $db->prepare($this->command);      //prepatra la consulta a la base ej $this->command = "select * from articulos where id = :id"
@@ -54,19 +52,11 @@ abstract class Repository{
 
             return $this->loadAll($query);              //retorna todos los resultados de la consulta (todoso los usuruis todos los articulos etc)
 
-            
-        }catch(PDOException $e){
-            return "FindAll error(".get_class($this)."): ".$e->getMessage();    //manejo de error, retonra un cartel informando el error
-        }
-
     }
 
     //el find funciona de la misma manera que el load all solo dierie en que retorna un resultado no un arreglo
     protected function find(){
-        try {
-            if( get_class($db = $this->connect()) == "PDOException" ){      //consulta que  sea un ubjeo PDO EXcepcio
-                return $db;                                                 //etorna la excepcion si lo es
-            }
+            $db = $this->connect();
             $query = $db->prepare($this->command);          //prepara la consulta 
             $query->execute($this->params);                 //cambia los parametros  de la consulta y la ejecuta
 
@@ -75,30 +65,20 @@ abstract class Repository{
             //fetch permite recuperar el resultado com un array asociativo(segun gpt) 
             
             return $result;
-        } catch (PDOException $e) {
-            return "Find error(".get_class($this)."): ".$e->getMessage();
-        }
     }
 
     //las funciones executenonquery esta echa para consultas que no requiewren de un resultado o un return 
     //esta pensado para los insert, update, delete
     //retorna true o false si la consulta fue ejecutada
     protected function execNonQuery(){
-        try{
-
             //esta parte es excatamente igual a las otras(meloask no es mejor un metodo para esto auqneu son 2 lineas nose xd)
             //se fija si es una excepcoin y si lo es maneja el error imprimiendo un cartelito
-            if( get_class($db = $this->connect()) == "PDOException" ){
-                return $db;
-            }
+            $db = $this->connect();
 
             $query = $db->prepare($this->command);  //prepara la consulta
             $query->execute($this->params);         //ejecuta cambiando los parametros y se genera un onjeto pdotestament    
             
             return true;                            //si la consulta fue echa sin prblema retorna true(meloAsk enb que parte retorna false o no es necesario)
-        }catch(PDOException $e){
-            return "NonQuery error(".get_class($this)."): ".$e->getMessage();//si hubo una exception retorna un cartel
-        }
     }
 
     //la funcion loadAll agrega todos los resultadios de la consulta a un array.

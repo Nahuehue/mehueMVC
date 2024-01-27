@@ -9,9 +9,9 @@ define('URL_BASE', 'http://localhost');
 
 //configuracion base de datos
 define('HOST', 'localhost');   //Host = a la ip donde esta todo alojadoen este caso localhost
-define('DB', 'blog');          //nombre de la base
+define('DB', 'mydb');          //nombre de la base
 define('USER', 'root');        //Usuer de la base 
-define('PASSWORD', "1234");    //contraseña de la base
+define('PASSWORD', "");    //contraseña de la base
 
 
 define('CHARSET', 'utf8mb4');  //El formato de los carcteres del sitio

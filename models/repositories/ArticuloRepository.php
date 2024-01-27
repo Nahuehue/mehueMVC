@@ -73,7 +73,7 @@ class ArticuloRepository extends Repository
 	function doLoad($array){
 		if($array == null) return null;//se fija si el array dado con los datos del articulo es null, si lo es retorna null
 		$u = new UsuarioRepository();   //crea una inmtancia $u de usuario repository
-		return new Articulo((int)$array["id"],$array["titulo"],$array["subtitulo"],$u->get($array["usuarioid"]),(string)$array["contenido"],(bool)$array["espublico"],new DateTime($array["fechacreacion"]),new DateTime($array["fechaedicion"]),(bool)$array["tieneportada"]);
+		return new Articulo((int)$array["id"],$array["titulo"],$array["subtitulo"],$u->get($array["usuario_id"]),(string)$array["contenido"],(bool)$array["public"],new DateTime($array["fechaCreacion"]),new DateTime($array["fechaEdicion"]),(bool)$array["tienePortada"]);
         //con los datos dado por el array cre el objeto o la instancia De Articulo
     }
 }

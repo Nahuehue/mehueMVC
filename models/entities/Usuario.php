@@ -12,7 +12,7 @@ class Usuario
 
 
 	//aca se esta armando un usuario con los datos pasados por parametros
-	function __construct($id,$nombre,$contrasenia,$perfil)
+	function __construct($id, $nombre, $contrasenia, $perfil = null)
 	{
 		$this->id = $id;
 		$this->nombre = $nombre;
@@ -33,7 +33,7 @@ class Usuario
 		return $this->nombre;
 	}
 
-	function getcontrasenia(){
+	function getContrasenia(){
 		return $this->contrasenia;
 	}
 

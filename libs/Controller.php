@@ -2,8 +2,12 @@
 
 class Controller{
 
+    private static $currentUrl = null;
     public $data = [];
-    protected function render($nombre = "index"){
+    protected function render($nombre = null, $vars = []){
+        if(!$nombre)
+            $nombre = "index";
+
         // asi nunca mas
        /* if ( count ($args = func_get_args()) == 1 ) {
             $nombre = $args[0];
@@ -18,6 +22,15 @@ class Controller{
 
         $viewFolder = substr(get_class($this), 0, -10); //des pues de la coma " "(obtienen nombre de lka clase ArticuloController contact etc)
       //  print("nombre: $nombre folder:$viewFolder");
+        self::$currentUrl = URL_BASE."?url=$viewFolder";
+        if($nombre != "index")
+           self::$currentUrl .= "/$nombre";
+
+        $vars = array_merge($vars,[
+            "currentUrl" => self::$currentUrl
+        ]);
+        extract($vars);
+
         include 'views/'.$viewFolder. "/" . $nombre . '.php';
     }
 }
